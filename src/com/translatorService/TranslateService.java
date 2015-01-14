@@ -1,4 +1,4 @@
-package com.joshuakegley.hcitranslation; 
+package com.translatorService; 
 
 
 import java.io.BufferedReader;

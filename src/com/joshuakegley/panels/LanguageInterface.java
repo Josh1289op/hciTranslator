@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package com.joshuakegley.panels;
-import com.joshuakegley.hcitranslation.Language;
+import com.translatorService.Language;
 import com.joshuakegley.hcitranslation.settings;
 import java.awt.event.ActionListener;
 import java.util.Enumeration;

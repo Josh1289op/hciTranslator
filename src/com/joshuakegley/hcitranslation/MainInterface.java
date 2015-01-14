@@ -5,12 +5,16 @@
  */
 package com.joshuakegley.hcitranslation;
 
+import com.translatorService.Language;
+import com.darrylburke.MenuScroller;
+import static com.joshuakegley.hcitranslation.HciTranslator.mainView;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import javax.swing.GroupLayout;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
@@ -80,7 +84,7 @@ public class MainInterface extends javax.swing.JFrame implements ActionListener 
         for (JMenuItem item : list) {
             menu.add(item);
         }
-        MenuScroller.setScrollerFor(menu, 8, 125, 3, 1);  
+        MenuScroller.setScrollerFor(menu, 8, 125, 0, 0);  
     }
     
     public void updateUserSettings(int user, String language){
@@ -93,6 +97,27 @@ public class MainInterface extends javax.swing.JFrame implements ActionListener 
         
     }
     
+    
+    public static void addPanel(JPanel panel){
+        //LanguageInterface select = new LanguageInterface(user);
+        
+        GroupLayout layout = new javax.swing.GroupLayout(mainView.getContentPane());
+        mainView.getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(74, 74, 74)
+                .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(92, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(37, 37, 37)
+                .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(56, Short.MAX_VALUE))
+        );
+    }
 
     
     @Override

@@ -15,6 +15,10 @@ public class settings {
 
     public static void setLang1(String lang1) {
         settings.lang1 = lang1;
+        System.out.println("lol");
+        if(lang1 != null && lang2 != null){
+            HciTranslator.translate();
+        }
     }
 
     public static String getLang2() {
@@ -23,6 +27,9 @@ public class settings {
 
     public static void setLang2(String lang2) {
         settings.lang2 = lang2;
+        if(lang1 != null && lang2 != null){
+            HciTranslator.translate();
+        }
     }
     
     
