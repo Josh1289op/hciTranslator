@@ -2,8 +2,10 @@ package com.joshuakegley.hcitranslation;
 
 import java.awt.EventQueue;
 import com.joshuakegley.panels.LanguageInterface;
+import com.joshuakegley.panels.TranslateInterface;
 import javax.swing.GroupLayout;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 /**
  * MenuScroller.java library credit: Darryl Burke 
  * https://tips4java.wordpress.com/2009/02/01/menu-scroller/
@@ -37,54 +39,51 @@ public class HciTranslator {
                 mainLogic.mainView.setVisible(true);
             }
         });
-        mainLogic.setup();
-        mainLogic.translate();
-    
+        mainLogic.setup();    
     }
-    MainInterface mainView;
+    public static MainInterface mainView;
     
    
 
     
     public void setup(){
+        LanguageInterface one = new LanguageInterface("One");
+        LanguageInterface two = new LanguageInterface("Two");
+        EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                System.out.println("Adding Panel One");
+                mainView.addPanel(one);
+                
+            }
+        });
+        EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                System.out.println("Adding Panel Two");
+                mainView.addPanel(two);
+                
+            }
+        });
         
-        languageSelect("One");
         
-        languageSelect("Two");
+        //languageSelect("One");
+        //languageSelect("Two");
         //Create instance of language page
         //Request User One Language
         //Request User Two Language
         
     }
     
-    public void translate(){
-        
-        //open translation page
-        //begin translations
+    public static void translate(){
+        EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                TranslateInterface translate = new TranslateInterface();
+                mainView.addPanel(translate);
+            }
+        });
     }
     
-    public void languageSelect(String user){
-        LanguageInterface select = new LanguageInterface(user);
-        
-        GroupLayout layout = new javax.swing.GroupLayout(mainView.getContentPane());
-        mainView.getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(74, 74, 74)
-                .addComponent(select, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(92, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addComponent(select, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(56, Short.MAX_VALUE))
-        );
+    
+    
+    
 
-        
-    }
-    
-    
 }
