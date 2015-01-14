@@ -1,11 +1,10 @@
-
 package com.joshuakegley.hcitranslation;
 
 /**
  *Sort of a pointless method, just wanting to test it out
  * @author Josh
  */
-public class settings {
+public class Settings {
     private static String lang1 = null;
     private static String lang2 = null;
 
@@ -13,12 +12,12 @@ public class settings {
         return lang1;
     }
 
-    public static void setLang1(String lang1) {
-        settings.lang1 = lang1;
-        HciTranslator.one.setPanelInvisible();
+    public static void setLang1(String langLabel, String langCode) {
+        Settings.lang1 = langCode;
+        MainDriver.one.setPanelInvisible();
         System.out.println("lol");
-        if(lang1 != null && lang2 != null){
-            HciTranslator.translate();
+        if(langCode != null && lang2 != null){
+            MainDriver.translate();
         }
     }
 
@@ -26,11 +25,11 @@ public class settings {
         return lang2;
     }
 
-    public static void setLang2(String lang2) {
-        settings.lang2 = lang2;
-        HciTranslator.two.setPanelInvisible();
-        if(lang1 != null && lang2 != null){
-            HciTranslator.translate();
+    public static void setLang2(String langLabel, String langCode) {
+        Settings.lang2 = langCode;
+        MainDriver.two.setPanelInvisible();
+        if(lang1 != null && langCode != null){
+            MainDriver.translate();
         }
     }
     
