@@ -18,6 +18,17 @@ public class TranslateInterface extends javax.swing.JPanel {
         initComponents();
     }
 
+    public static void setLang1(String text){
+        System.out.println("TEST");
+        lang1Label.setText(text);
+    }
+    
+    public static void setLang2(String text){
+        lang2Label.setText(text);
+    }    
+    
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -28,35 +39,128 @@ public class TranslateInterface extends javax.swing.JPanel {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        displayPane = new javax.swing.JTextArea();
+        lang1TranslateBox = new javax.swing.JScrollPane();
+        jTextArea2 = new javax.swing.JTextArea();
+        lang2TranslateBox = new javax.swing.JScrollPane();
+        jTextArea3 = new javax.swing.JTextArea();
+        lang2TranslateBtn = new javax.swing.JButton();
+        lang1TranslateBtn = new javax.swing.JButton();
+        lang1ResetBtn = new javax.swing.JButton();
+        lang2ResetBtn = new javax.swing.JButton();
+        lang1Label = new javax.swing.JLabel();
+        lang2Label = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(586, 469));
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        displayPane.setEditable(false);
+        displayPane.setColumns(20);
+        displayPane.setRows(5);
+        jScrollPane1.setViewportView(displayPane);
+
+        jTextArea2.setColumns(20);
+        jTextArea2.setRows(5);
+        lang1TranslateBox.setViewportView(jTextArea2);
+
+        jTextArea3.setColumns(20);
+        jTextArea3.setRows(5);
+        lang2TranslateBox.setViewportView(jTextArea3);
+
+        lang2TranslateBtn.setFont(new java.awt.Font("Quicksand", 0, 12)); // NOI18N
+        lang2TranslateBtn.setText("Translate");
+
+        lang1TranslateBtn.setFont(new java.awt.Font("Quicksand", 0, 12)); // NOI18N
+        lang1TranslateBtn.setText("Translate");
+        lang1TranslateBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                lang1TranslateBtnActionPerformed(evt);
+            }
+        });
+
+        lang1ResetBtn.setFont(new java.awt.Font("Quicksand", 0, 12)); // NOI18N
+        lang1ResetBtn.setText("Reset");
+
+        lang2ResetBtn.setFont(new java.awt.Font("Quicksand", 0, 12)); // NOI18N
+        lang2ResetBtn.setText("Reset");
+
+        lang1Label.setFont(new java.awt.Font("Quicksand", 2, 24)); // NOI18N
+        lang1Label.setText("English");
+
+        lang2Label.setFont(new java.awt.Font("Quicksand", 2, 24)); // NOI18N
+        lang2Label.setText("English");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(80, 80, 80)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 413, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(93, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(lang1TranslateBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(lang1TranslateBtn)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(lang1ResetBtn)))
+                            .addComponent(lang1Label))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 234, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(lang2TranslateBtn)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(lang2ResetBtn))
+                                .addComponent(lang2TranslateBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lang2Label, javax.swing.GroupLayout.Alignment.TRAILING))))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(205, Short.MAX_VALUE)
+                .addContainerGap(21, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lang1Label, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lang2Label, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(lang1TranslateBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lang1TranslateBtn)
+                            .addComponent(lang1ResetBtn)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(lang2TranslateBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lang2TranslateBtn)
+                            .addComponent(lang2ResetBtn))))
+                .addGap(33, 33, 33)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void lang1TranslateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lang1TranslateBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lang1TranslateBtnActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextArea displayPane;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextArea jTextArea2;
+    private javax.swing.JTextArea jTextArea3;
+    private static javax.swing.JLabel lang1Label;
+    private javax.swing.JButton lang1ResetBtn;
+    private javax.swing.JScrollPane lang1TranslateBox;
+    private javax.swing.JButton lang1TranslateBtn;
+    private static javax.swing.JLabel lang2Label;
+    private javax.swing.JButton lang2ResetBtn;
+    private javax.swing.JScrollPane lang2TranslateBox;
+    private javax.swing.JButton lang2TranslateBtn;
     // End of variables declaration//GEN-END:variables
 }

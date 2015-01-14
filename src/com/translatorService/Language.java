@@ -95,12 +95,13 @@ public class Language {
         "Tamil", "Telugu", "Thai", "Turkish", "Ukrainian", "Urdu", "Vietnamese", "Welsh", "Yiddish"
     };
     
-    public Map<String, String> languageMapping;
+    public static Map<String, String> languageMapping;
+    
     public void createMenuMap(){
         languageMapping = new HashMap<String, String>();
         
         for(int i = 1; i < lang.length; ++i){
-            languageMapping.put(lang[i], langCode[i]);
+            languageMapping.put(langCode[i], lang[i]);
         }
 
     }

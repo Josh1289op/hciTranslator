@@ -5,7 +5,7 @@
  */
 package com.joshuakegley.panels;
 import com.translatorService.Language;
-import com.joshuakegley.hcitranslation.settings;
+import com.joshuakegley.hcitranslation.Settings;
 import java.awt.event.ActionListener;
 import java.util.Enumeration;
 import javax.swing.AbstractButton;
@@ -21,8 +21,8 @@ public class LanguageInterface extends JPanel {
     /**
      * Creates new form languageInterface
      */
-    
-    public String selectedLang = null;
+    public String selectedLangLabel = null;
+    public String selectedLangCode = null;
     public String user;
     
     public LanguageInterface(){
@@ -51,6 +51,14 @@ public class LanguageInterface extends JPanel {
             }
         }
         return radioButton;
+    }
+    
+    public void setPanelInvisible(){
+        this.setVisible(false);
+    }
+    
+    public void setPanelVisible(){
+        this.setVisible(true);
     }
     
     /**
@@ -378,17 +386,19 @@ public class LanguageInterface extends JPanel {
 
     private void selectButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectButtonActionPerformed
         if(dropdownLang.getSelectedIndex() != 0){
-           selectedLang = languages.langCode[dropdownLang.getSelectedIndex()];
+           selectedLangCode = languages.langCode[dropdownLang.getSelectedIndex()];
+           selectedLangLabel = languages.lang[dropdownLang.getSelectedIndex()];
 
         }else if(getSelectedRadioButton(selectLang) != null){
-            selectedLang = languages.langCode[Integer.parseInt(getSelectedRadioButton(selectLang).getName())];
+            selectedLangCode = languages.langCode[Integer.parseInt(getSelectedRadioButton(selectLang).getName())];
+            selectedLangLabel = languages.lang[Integer.parseInt(getSelectedRadioButton(selectLang).getName())];
         }else{
             return;
         }
         if(user == "One"){
-            settings.setLang1(selectedLang);
+            Settings.setLang1(selectedLangLabel, selectedLangCode);
         }else{
-            settings.setLang2(selectedLang);
+            Settings.setLang2(selectedLangLabel, selectedLangCode);
         }
         setVisible(false);
     }//GEN-LAST:event_selectButtonActionPerformed

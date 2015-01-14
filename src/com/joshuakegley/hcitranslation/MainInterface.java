@@ -7,7 +7,7 @@ package com.joshuakegley.hcitranslation;
 
 import com.translatorService.Language;
 import com.darrylburke.MenuScroller;
-import static com.joshuakegley.hcitranslation.HciTranslator.mainView;
+import static com.joshuakegley.hcitranslation.MainDriver.mainView;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -87,11 +87,11 @@ public class MainInterface extends javax.swing.JFrame implements ActionListener 
         MenuScroller.setScrollerFor(menu, 8, 125, 0, 0);  
     }
     
-    public void updateUserSettings(int user, String language){
+    public void updateUserSettings(int user, String languageLabel, String language){
         if(user == 1){
-            settings.setLang1(language);
+            Settings.setLang1(languageLabel, language);
         }else{
-            settings.setLang2(language);
+            Settings.setLang2(languageLabel, language);
         }
         System.out.println("User " + user + " Language updated to: " + language);
         
@@ -124,12 +124,13 @@ public class MainInterface extends javax.swing.JFrame implements ActionListener 
     public void actionPerformed(ActionEvent e) {
         //Get the action clicked which is mapped to a number, map that number to langCode Array stored in Languages
         String languageCode = lang.langCode[langMap.get(e.getActionCommand())];
+        String languageLabel = e.getActionCommand();
         System.out.println(langMap.get(e.getActionCommand()));
         //Detecting which user language is to be changed
         JPopupMenu menu = (JPopupMenu)((JMenuItem) e.getSource()).getParent();
         JMenu theMenu = (JMenu) menu.getInvoker();
         int userCode = Integer.parseInt(theMenu.getName());
-        updateUserSettings(userCode, languageCode);
+        updateUserSettings(userCode, languageLabel, languageCode);
     }
     
     
@@ -152,6 +153,7 @@ public class MainInterface extends javax.swing.JFrame implements ActionListener 
         u2Langs = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         fileMenu.setText("File");
 

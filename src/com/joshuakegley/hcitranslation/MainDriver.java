@@ -15,7 +15,7 @@ import javax.swing.JPanel;
  * 
  * @author Joshua Kegley
  */
-public class HciTranslator {
+public class MainDriver {
 
     /**
      * @param args the command line arguments
@@ -31,7 +31,7 @@ public class HciTranslator {
         *
         **/
         
-        HciTranslator mainLogic = new HciTranslator();
+        MainDriver mainLogic = new MainDriver();
         mainLogic.mainView = new MainInterface();
         mainLogic.mainView.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         EventQueue.invokeLater(new Runnable() {
@@ -42,13 +42,15 @@ public class HciTranslator {
         mainLogic.setup();    
     }
     public static MainInterface mainView;
-    
-   
+    public static LanguageInterface one;
+    public static LanguageInterface two;
+    public static TranslateInterface translate = new TranslateInterface();;
+
 
     
     public void setup(){
-        LanguageInterface one = new LanguageInterface("One");
-        LanguageInterface two = new LanguageInterface("Two");
+        one = new LanguageInterface("One");
+        two = new LanguageInterface("Two");
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 System.out.println("Adding Panel One");
@@ -58,6 +60,7 @@ public class HciTranslator {
         });
         EventQueue.invokeLater(new Runnable() {
             public void run() {
+                
                 System.out.println("Adding Panel Two");
                 mainView.addPanel(two);
                 
@@ -76,7 +79,6 @@ public class HciTranslator {
     public static void translate(){
         EventQueue.invokeLater(new Runnable() {
             public void run() {
-                TranslateInterface translate = new TranslateInterface();
                 mainView.addPanel(translate);
             }
         });
