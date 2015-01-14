@@ -1,5 +1,7 @@
 package com.joshuakegley.hcitranslation;
 
+import com.joshuakegley.panels.TranslateInterface;
+
 /**
  *Sort of a pointless method, just wanting to test it out
  * @author Josh
@@ -15,7 +17,7 @@ public class Settings {
     public static void setLang1(String langLabel, String langCode) {
         Settings.lang1 = langCode;
         MainDriver.one.setPanelInvisible();
-        System.out.println("lol");
+        TranslateInterface.setLang1(langLabel);
         if(langCode != null && lang2 != null){
             MainDriver.translate();
         }
@@ -28,6 +30,7 @@ public class Settings {
     public static void setLang2(String langLabel, String langCode) {
         Settings.lang2 = langCode;
         MainDriver.two.setPanelInvisible();
+        TranslateInterface.setLang2(langLabel);
         if(lang1 != null && langCode != null){
             MainDriver.translate();
         }
