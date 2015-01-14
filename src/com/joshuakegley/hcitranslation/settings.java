@@ -15,6 +15,7 @@ public class settings {
 
     public static void setLang1(String lang1) {
         settings.lang1 = lang1;
+        HciTranslator.one.setPanelInvisible();
         System.out.println("lol");
         if(lang1 != null && lang2 != null){
             HciTranslator.translate();
@@ -27,6 +28,7 @@ public class settings {
 
     public static void setLang2(String lang2) {
         settings.lang2 = lang2;
+        HciTranslator.two.setPanelInvisible();
         if(lang1 != null && lang2 != null){
             HciTranslator.translate();
         }
