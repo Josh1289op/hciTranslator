@@ -7,7 +7,7 @@ package com.joshuakegley.panels;
 
 import com.joshuakegley.hcitranslation.MainDriver;
 import com.joshuakegley.hcitranslation.Settings;
-import com.translatorService.Translate;
+import com.joshuakegley.hcitranslation.Translate;
 import java.awt.EventQueue;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -49,14 +49,9 @@ public class TranslateInterface extends javax.swing.JPanel {
             }else{
                 EventQueue.invokeLater(new Runnable() {
                     public void run() {
-                        try {
-                            lang1TranslateBtn.setText(Translate.translate("Translate", "en", langCode));
-                            lang1ResetBtn.setText(Translate.translate("Reset", "en", langCode));
-                        } catch (ParseException ex) {
-                            Logger.getLogger(TranslateInterface.class.getName()).log(Level.SEVERE, null, ex);
-                        } catch (IOException ex) {
-                            Logger.getLogger(TranslateInterface.class.getName()).log(Level.SEVERE, null, ex);
-                        }
+                  
+                        lang1TranslateBtn.setText(Translate.translate("Translate", "en", langCode));
+                        lang1ResetBtn.setText(Translate.translate("Reset", "en", langCode));
                     }
                 });
             }
@@ -71,14 +66,8 @@ public class TranslateInterface extends javax.swing.JPanel {
         }else{
             EventQueue.invokeLater(new Runnable() {
                 public void run() {
-                    try {
-                        lang2TranslateBtn.setText(Translate.translate("Translate", "en", langCode));
-                        lang2ResetBtn.setText(Translate.translate("Reset", "en", langCode));
-                    } catch (ParseException ex) {
-                        Logger.getLogger(TranslateInterface.class.getName()).log(Level.SEVERE, null, ex);
-                    } catch (IOException ex) {
-                        Logger.getLogger(TranslateInterface.class.getName()).log(Level.SEVERE, null, ex);
-                    }
+                    lang2TranslateBtn.setText(Translate.translate("Translate", "en", langCode));
+                    lang2ResetBtn.setText(Translate.translate("Reset", "en", langCode));
                 }
             });
         }
@@ -89,28 +78,15 @@ public class TranslateInterface extends javax.swing.JPanel {
         
         if (user == 1){
             String message = lang1Text.getText();
-            try {
-                String result = Translate.translate(message, Settings.getLang1(), Settings.getLang2());
-                result = result.replaceAll("&#39;","\'");
-                displayPane.append("\n" + result);            
-            } catch (ParseException ex) {
-                Logger.getLogger(TranslateInterface.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (IOException ex) {
-                Logger.getLogger(TranslateInterface.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            String result = Translate.translate(message, Settings.getLang1(), Settings.getLang2());
+            result = result.replaceAll("&#39;","\'");
+            displayPane.append("\n" + result);            
             
         }else {
             String message = lang2Text.getText();
-            try {
-                String result = Translate.translate(message, Settings.getLang2(), Settings.getLang1());
-                result = result.replaceAll("&#39;","\'");
-                displayPane.append("\n" + result);
-
-            } catch (ParseException ex) {
-                Logger.getLogger(TranslateInterface.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (IOException ex) {
-                Logger.getLogger(TranslateInterface.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            String result = Translate.translate(message, Settings.getLang2(), Settings.getLang1());
+            result = result.replaceAll("&#39;","\'");
+            displayPane.append("\n" + result);
         }
         
         
