@@ -42,7 +42,7 @@ public class TranslateInterface extends javax.swing.JPanel {
     }
 
     public static void setLang1(String langLabel, String langCode){
-            lang1Label.setText(langLabel);
+            //lang1Label.setText(langLabel);
             if(langCode == "en"){
                 lang1TranslateBtn.setText("Translate");
                 lang1ResetBtn.setText("Reset");
@@ -63,7 +63,7 @@ public class TranslateInterface extends javax.swing.JPanel {
     }
     
     public static void setLang2(String langLabel, String langCode){
-        lang2Label.setText(langLabel);
+        //lang2Label.setText(langLabel);
         if(langCode == "en"){
             lang2TranslateBtn.setText("Translate");
             lang2ResetBtn.setText("Reset");
@@ -135,8 +135,8 @@ public class TranslateInterface extends javax.swing.JPanel {
         lang1TranslateBtn = new javax.swing.JButton();
         lang1ResetBtn = new javax.swing.JButton();
         lang2ResetBtn = new javax.swing.JButton();
-        lang1Label = new javax.swing.JLabel();
-        lang2Label = new javax.swing.JLabel();
+        choice1 = new java.awt.Choice();
+        choice2 = new java.awt.Choice();
 
         setPreferredSize(new java.awt.Dimension(586, 469));
 
@@ -175,12 +175,6 @@ public class TranslateInterface extends javax.swing.JPanel {
         lang2ResetBtn.setFont(new java.awt.Font("Arial Unicode MS", 0, 12)); // NOI18N
         lang2ResetBtn.setText("Reset");
 
-        lang1Label.setFont(new java.awt.Font("Quicksand", 2, 24)); // NOI18N
-        lang1Label.setText("English");
-
-        lang2Label.setFont(new java.awt.Font("Quicksand", 2, 24)); // NOI18N
-        lang2Label.setText("English");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -190,33 +184,33 @@ public class TranslateInterface extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(lang1TranslateBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(lang1TranslateBtn)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(lang1ResetBtn)))
-                            .addComponent(lang1Label))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(lang1TranslateBox)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lang1TranslateBtn)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lang1ResetBtn))
+                            .addComponent(choice2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 234, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(lang2TranslateBtn)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(lang2ResetBtn))
-                                .addComponent(lang2TranslateBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(lang2Label, javax.swing.GroupLayout.Alignment.TRAILING))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lang2TranslateBtn)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lang2ResetBtn))
+                            .addComponent(lang2TranslateBox)
+                            .addComponent(choice1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(17, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lang1Label, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lang2Label, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(choice1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(2, 2, 2))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(choice2, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(lang1TranslateBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -238,14 +232,14 @@ public class TranslateInterface extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private java.awt.Choice choice1;
+    private java.awt.Choice choice2;
     private javax.swing.JTextArea displayPane;
     private javax.swing.JScrollPane jScrollPane1;
-    private static javax.swing.JLabel lang1Label;
     private static javax.swing.JButton lang1ResetBtn;
     private javax.swing.JTextArea lang1Text;
     private javax.swing.JScrollPane lang1TranslateBox;
     private static javax.swing.JButton lang1TranslateBtn;
-    private static javax.swing.JLabel lang2Label;
     private static javax.swing.JButton lang2ResetBtn;
     private javax.swing.JTextArea lang2Text;
     private javax.swing.JScrollPane lang2TranslateBox;
