@@ -92,9 +92,7 @@ public class MainInterface extends javax.swing.JFrame implements ActionListener 
             Settings.setLang1(languageLabel, language);
         }else{
             Settings.setLang2(languageLabel, language);
-        }
-        System.out.println("User " + user + " Language updated to: " + language);
-        
+        }        
     }
     
     
@@ -125,7 +123,6 @@ public class MainInterface extends javax.swing.JFrame implements ActionListener 
         //Get the action clicked which is mapped to a number, map that number to langCode Array stored in Languages
         String languageCode = lang.langCode[langMap.get(e.getActionCommand())];
         String languageLabel = e.getActionCommand();
-        System.out.println(langMap.get(e.getActionCommand()));
         //Detecting which user language is to be changed
         JPopupMenu menu = (JPopupMenu)((JMenuItem) e.getSource()).getParent();
         JMenu theMenu = (JMenu) menu.getInvoker();

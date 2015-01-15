@@ -1,18 +1,17 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.joshuakegley.panels;
 
 import com.joshuakegley.hcitranslation.MainDriver;
 import com.joshuakegley.hcitranslation.Settings;
 import com.joshuakegley.hcitranslation.Translate;
+import com.translatorService.Language;
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import org.json.simple.parser.ParseException;
 
 /**
@@ -25,7 +24,7 @@ public class TranslateInterface extends javax.swing.JPanel {
      * Creates new form TranslateInterface
      */
     public TranslateInterface() {
-
+       
         initComponents();
         
         lang1TranslateBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -39,17 +38,30 @@ public class TranslateInterface extends javax.swing.JPanel {
             }
         });
         
+        
+        user1ComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                user1ComboBoxAction(evt);   
+            }
+        });
+        
+        user2ComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                user2ComboBoxAction(evt);   
+            }
+        });
+        
     }
-
+    private static Language languages = new Language();
     public static void setLang1(String langLabel, String langCode){
-            //lang1Label.setText(langLabel);
             if(langCode == "en"){
+                user1ComboBox.setSelectedIndex(16);
                 lang1TranslateBtn.setText("Translate");
                 lang1ResetBtn.setText("Reset");
             }else{
                 EventQueue.invokeLater(new Runnable() {
                     public void run() {
-                  
+                        user1ComboBox.setSelectedIndex(Arrays.asList(languages.langCode).indexOf(langCode));
                         lang1TranslateBtn.setText(Translate.translate("Translate", "en", langCode));
                         lang1ResetBtn.setText(Translate.translate("Reset", "en", langCode));
                     }
@@ -58,14 +70,15 @@ public class TranslateInterface extends javax.swing.JPanel {
     }
     
     public static void setLang2(String langLabel, String langCode){
-        //lang2Label.setText(langLabel);
         if(langCode == "en"){
+            user2ComboBox.setSelectedIndex(16);
             lang2TranslateBtn.setText("Translate");
             lang2ResetBtn.setText("Reset");
             return;
         }else{
             EventQueue.invokeLater(new Runnable() {
                 public void run() {
+                    user2ComboBox.setSelectedIndex(Arrays.asList(languages.langCode).indexOf(langCode));
                     lang2TranslateBtn.setText(Translate.translate("Translate", "en", langCode));
                     lang2ResetBtn.setText(Translate.translate("Reset", "en", langCode));
                 }
@@ -111,8 +124,8 @@ public class TranslateInterface extends javax.swing.JPanel {
         lang1TranslateBtn = new javax.swing.JButton();
         lang1ResetBtn = new javax.swing.JButton();
         lang2ResetBtn = new javax.swing.JButton();
-        choice1 = new java.awt.Choice();
-        choice2 = new java.awt.Choice();
+        user1ComboBox = new javax.swing.JComboBox();
+        user2ComboBox = new javax.swing.JComboBox();
 
         setPreferredSize(new java.awt.Dimension(586, 469));
 
@@ -151,6 +164,10 @@ public class TranslateInterface extends javax.swing.JPanel {
         lang2ResetBtn.setFont(new java.awt.Font("Arial Unicode MS", 0, 12)); // NOI18N
         lang2ResetBtn.setText("Reset");
 
+        user1ComboBox.setModel(new javax.swing.DefaultComboBoxModel(languages.lang));
+
+        user2ComboBox.setModel(new javax.swing.DefaultComboBoxModel(languages.lang));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -166,27 +183,24 @@ public class TranslateInterface extends javax.swing.JPanel {
                                 .addComponent(lang1TranslateBtn)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(lang1ResetBtn))
-                            .addComponent(choice2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 234, Short.MAX_VALUE)
+                            .addComponent(user1ComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 230, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(lang2TranslateBtn)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(lang2ResetBtn))
                             .addComponent(lang2TranslateBox)
-                            .addComponent(choice1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(user2ComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(choice1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(2, 2, 2))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(choice2, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(user1ComboBox, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
+                    .addComponent(user2ComboBox))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(lang1TranslateBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -206,10 +220,44 @@ public class TranslateInterface extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private static void user1ComboBoxAction(ActionEvent evt){
+        int selected = ((JComboBox)evt.getSource()).getSelectedIndex();
+        
+        if(languages.langCode[selected] == "en"){
+            lang1TranslateBtn.setText("Translate");
+            lang1ResetBtn.setText("Reset");
+        }else{
+            EventQueue.invokeLater(new Runnable() {
+                public void run() {
+                    lang1TranslateBtn.setText(Translate.translate("Translate", "en", languages.langCode[selected]));
+                    lang1ResetBtn.setText(Translate.translate("Reset", "en", languages.langCode[selected]));
+                }
+            });
+        }
+        System.out.println("User 1 Language updated to: " + languages.lang[selected]);
+        Settings.setLang1(languages.lang[selected], languages.langCode[selected]);
+    }
+    
+    private static void user2ComboBoxAction(ActionEvent evt){
+        int selected = ((JComboBox)evt.getSource()).getSelectedIndex();
+        
+
+        if(languages.langCode[selected] == "en"){
+            lang2TranslateBtn.setText("Translate");
+            lang2ResetBtn.setText("Reset");
+        }else{
+            EventQueue.invokeLater(new Runnable() {
+                public void run() {
+                    lang2TranslateBtn.setText(Translate.translate("Translate", "en", languages.langCode[selected]));
+                    lang2ResetBtn.setText(Translate.translate("Reset", "en", languages.langCode[selected]));
+                }
+            });
+        }
+        System.out.println("User 2 Language updated to: " + languages.lang[selected]);
+        Settings.setLang2(languages.lang[selected], languages.langCode[selected]);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private java.awt.Choice choice1;
-    private java.awt.Choice choice2;
     private javax.swing.JTextArea displayPane;
     private javax.swing.JScrollPane jScrollPane1;
     private static javax.swing.JButton lang1ResetBtn;
@@ -220,5 +268,7 @@ public class TranslateInterface extends javax.swing.JPanel {
     private javax.swing.JTextArea lang2Text;
     private javax.swing.JScrollPane lang2TranslateBox;
     private static javax.swing.JButton lang2TranslateBtn;
+    private static javax.swing.JComboBox user1ComboBox;
+    private static javax.swing.JComboBox user2ComboBox;
     // End of variables declaration//GEN-END:variables
 }

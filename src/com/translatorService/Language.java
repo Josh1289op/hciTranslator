@@ -96,7 +96,9 @@ public class Language {
     };
     
     public static Map<String, String> languageMapping;
-    
+    public static Map<String, String> getLanguageMapping(){
+        return languageMapping;
+    }
     public void createMenuMap(){
         languageMapping = new HashMap<String, String>();
         

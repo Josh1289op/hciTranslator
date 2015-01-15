@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package com.joshuakegley.panels;
+import com.joshuakegley.hcitranslation.MainDriver;
 import com.translatorService.Language;
 import com.joshuakegley.hcitranslation.Settings;
 import java.awt.event.ActionListener;
@@ -34,9 +35,7 @@ public class LanguageInterface extends JPanel {
         super();
         initComponents();
         this.userLabel.setText("User" + " " + title + ":");
-        user = title;
-        
-       
+        user = title; 
     }
     
     private JRadioButton getSelectedRadioButton(ButtonGroup buttonGroup) {
@@ -143,6 +142,7 @@ public class LanguageInterface extends JPanel {
 
         selectLang.add(englishRadio);
         englishRadio.setFont(new java.awt.Font("Quicksand", 2, 14)); // NOI18N
+        englishRadio.setSelected(true);
         englishRadio.setText("English");
         englishRadio.setName("16"); // NOI18N
         englishRadio.addItemListener(new java.awt.event.ItemListener() {
@@ -386,21 +386,23 @@ public class LanguageInterface extends JPanel {
 
     private void selectButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectButtonActionPerformed
         if(dropdownLang.getSelectedIndex() != 0){
-           selectedLangCode = languages.langCode[dropdownLang.getSelectedIndex()];
-           selectedLangLabel = languages.lang[dropdownLang.getSelectedIndex()];
+            selectedLangCode = languages.langCode[dropdownLang.getSelectedIndex()];
+            selectedLangLabel = languages.lang[dropdownLang.getSelectedIndex()];
 
         }else if(getSelectedRadioButton(selectLang) != null){
             selectedLangCode = languages.langCode[Integer.parseInt(getSelectedRadioButton(selectLang).getName())];
             selectedLangLabel = languages.lang[Integer.parseInt(getSelectedRadioButton(selectLang).getName())];
         }else{
-            return;
         }
         if(user == "One"){
             Settings.setLang1(selectedLangLabel, selectedLangCode);
+            TranslateInterface.setLang1(selectedLangLabel, selectedLangCode);
+            setVisible(false);
         }else{
             Settings.setLang2(selectedLangLabel, selectedLangCode);
+            TranslateInterface.setLang2(selectedLangLabel, selectedLangCode);
+            setVisible(false);
         }
-        setVisible(false);
     }//GEN-LAST:event_selectButtonActionPerformed
 
     private void arabicRadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_arabicRadioActionPerformed
