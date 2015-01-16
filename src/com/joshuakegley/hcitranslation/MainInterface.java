@@ -8,6 +8,7 @@ package com.joshuakegley.hcitranslation;
 import com.translatorService.Language;
 import com.darrylburke.MenuScroller;
 import static com.joshuakegley.hcitranslation.MainDriver.mainView;
+import com.joshuakegley.panels.TranslateInterface;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -90,8 +91,10 @@ public class MainInterface extends javax.swing.JFrame implements ActionListener 
     public void updateUserSettings(int user, String languageLabel, String language){
         if(user == 1){
             Settings.setLang1(languageLabel, language);
+            TranslateInterface.setLang1(languageLabel, language);
         }else{
             Settings.setLang2(languageLabel, language);
+            TranslateInterface.setLang2(languageLabel, language);
         }        
     }
     

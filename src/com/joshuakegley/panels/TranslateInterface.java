@@ -1,9 +1,12 @@
 package com.joshuakegley.panels;
 
+import com.batsov.ContextMenuMouseListener;
 import com.joshuakegley.hcitranslation.MainDriver;
 import com.joshuakegley.hcitranslation.Settings;
 import com.joshuakegley.hcitranslation.Translate;
 import com.translatorService.Language;
+import java.awt.Color;
+import java.awt.Component;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.io.IOException;
@@ -12,6 +15,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.SimpleAttributeSet;
+import javax.swing.text.StyleConstants;
+import javax.swing.text.StyledDocument;
 import org.json.simple.parser.ParseException;
 
 /**
@@ -51,8 +58,14 @@ public class TranslateInterface extends javax.swing.JPanel {
             }
         });
         
+        lang1Text.addMouseListener(new ContextMenuMouseListener());
+        lang2Text.addMouseListener(new ContextMenuMouseListener());
+        displayPane.addMouseListener(new ContextMenuMouseListener());
+        
     }
     private static Language languages = new Language();
+    
+    
     public static void setLang1(String langLabel, String langCode){
             if(langCode == "en"){
                 user1ComboBox.setSelectedIndex(16);
@@ -88,21 +101,45 @@ public class TranslateInterface extends javax.swing.JPanel {
     
     private void actionListnerTranslate(java.awt.event.ActionEvent evt) {                                             
         int user = Integer.parseInt(((JButton)evt.getSource()).getName());
-        
+        String user1Result, user2Result, message;
+
         if (user == 1){
-            String message = lang1Text.getText();
-            String result = Translate.translate(message, Settings.getLang1(), Settings.getLang2());
-            result = result.replaceAll("&#39;","\'");
-            displayPane.append("\n" + result);            
+            message = lang1Text.getText();
+            user1Result = Translate.translate(message, Settings.getLang1(), Settings.getLang2());
+            user1Result = user1Result.replaceAll("&#39;","\'") + "\n";
+
+            StyledDocument sdoc = displayPane.getStyledDocument();
+            SimpleAttributeSet leftAlign = new SimpleAttributeSet();
+            StyleConstants.setAlignment(leftAlign, StyleConstants.ALIGN_LEFT);
+            int length = sdoc.getLength();
+            
+            try {
+                sdoc.insertString(length, message + "\n" + user1Result, null);
+                sdoc.setParagraphAttributes(length+1, 1, leftAlign, true);
+            } catch (BadLocationException ex) {
+                Logger.getLogger(TranslateInterface.class.getName()).log(Level.SEVERE, null, ex);
+            }
             
         }else {
-            String message = lang2Text.getText();
-            String result = Translate.translate(message, Settings.getLang2(), Settings.getLang1());
-            result = result.replaceAll("&#39;","\'");
-            displayPane.append("\n" + result);
+            message = lang2Text.getText();
+            user2Result = Translate.translate(message, Settings.getLang2(), Settings.getLang1());
+            user2Result = user2Result.replaceAll("&#39;","\'");
+            
+            StyledDocument sdoc = displayPane.getStyledDocument();
+            SimpleAttributeSet rightAlign = new SimpleAttributeSet();            
+            StyleConstants.setAlignment(rightAlign, StyleConstants.ALIGN_RIGHT);
+            int length = sdoc.getLength();
+            
+            try {
+                sdoc.insertString(length, user2Result + "\n" + message + "\n", null);
+                sdoc.setParagraphAttributes(length+1, 1, rightAlign, true);
+                sdoc.setParagraphAttributes(length + user2Result.length()+1, 1, rightAlign, true);
+            } catch (BadLocationException ex) {
+                Logger.getLogger(TranslateInterface.class.getName()).log(Level.SEVERE, null, ex);
+            };
         }
         
-        
+
     } 
     
     /**
@@ -114,8 +151,6 @@ public class TranslateInterface extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        displayPane = new javax.swing.JTextArea();
         lang1TranslateBox = new javax.swing.JScrollPane();
         lang1Text = new javax.swing.JTextArea();
         lang2TranslateBox = new javax.swing.JScrollPane();
@@ -126,16 +161,10 @@ public class TranslateInterface extends javax.swing.JPanel {
         lang2ResetBtn = new javax.swing.JButton();
         user1ComboBox = new javax.swing.JComboBox();
         user2ComboBox = new javax.swing.JComboBox();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        displayPane = new javax.swing.JTextPane();
 
         setPreferredSize(new java.awt.Dimension(586, 469));
-
-        displayPane.setEditable(false);
-        displayPane.setBackground(new java.awt.Color(222, 220, 220));
-        displayPane.setColumns(20);
-        displayPane.setLineWrap(true);
-        displayPane.setRows(5);
-        displayPane.setWrapStyleWord(true);
-        jScrollPane1.setViewportView(displayPane);
 
         lang1Text.setBackground(new java.awt.Color(255, 204, 204));
         lang1Text.setColumns(20);
@@ -168,6 +197,8 @@ public class TranslateInterface extends javax.swing.JPanel {
 
         user2ComboBox.setModel(new javax.swing.DefaultComboBoxModel(languages.lang));
 
+        jScrollPane2.setViewportView(displayPane);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -175,8 +206,8 @@ public class TranslateInterface extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addComponent(jScrollPane2)
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(lang1TranslateBox)
                             .addGroup(layout.createSequentialGroup()
@@ -184,7 +215,7 @@ public class TranslateInterface extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(lang1ResetBtn))
                             .addComponent(user1ComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 230, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 234, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(lang2TranslateBtn)
@@ -200,7 +231,7 @@ public class TranslateInterface extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(user1ComboBox, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
                     .addComponent(user2ComboBox))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(lang1TranslateBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -214,8 +245,8 @@ public class TranslateInterface extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lang2TranslateBtn)
                             .addComponent(lang2ResetBtn))))
-                .addGap(33, 33, 33)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -258,8 +289,8 @@ public class TranslateInterface extends javax.swing.JPanel {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextArea displayPane;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextPane displayPane;
+    private javax.swing.JScrollPane jScrollPane2;
     private static javax.swing.JButton lang1ResetBtn;
     private javax.swing.JTextArea lang1Text;
     private javax.swing.JScrollPane lang1TranslateBox;
