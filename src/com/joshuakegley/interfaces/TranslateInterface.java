@@ -1,4 +1,4 @@
-package com.joshuakegley.panels;
+package com.joshuakegley.interfaces;
 
 import com.batsov.ContextMenuMouseListener;
 import com.joshuakegley.hcitranslation.MainDriver;

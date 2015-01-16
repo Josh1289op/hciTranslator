@@ -1,8 +1,9 @@
 package com.joshuakegley.hcitranslation;
 
+import com.joshuakegley.interfaces.MainInterface;
 import java.awt.EventQueue;
-import com.joshuakegley.panels.LanguageInterface;
-import com.joshuakegley.panels.TranslateInterface;
+import com.joshuakegley.interfaces.LanguageInterface;
+import com.joshuakegley.interfaces.TranslateInterface;
 import javax.swing.GroupLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;

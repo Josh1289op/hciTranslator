@@ -87,7 +87,7 @@ public class Language {
         Tamil, Telugu, Thai, Turkish, Ukrainian, Urdu, Vietnamese, Welsh, Yiddish
     };
     public String lang[] = {
-        "", "Afrikaans", "Albanian", "Arabic", "Azerbaijani", "Basque", "Bengali", "Belarusian", "Bulgarian", "Catalan",
+        "Select Language", "Afrikaans", "Albanian", "Arabic", "Azerbaijani", "Basque", "Bengali", "Belarusian", "Bulgarian", "Catalan",
         "Chinese Simplified", "Chinese Traditional", "Croatian", "Czech", "Danish", "Dutch", "English", "Esperanto", "Estonian", "Filipino", 
         "Finnish", "French", "Galician", "Georgian", "German", "Greek", "Gujarati", "HaitianCreole", "Hebrew", "Hindi", "Hungarian", "Icelandic", 
         "Indonesian", "Irish", "Italian", "Japanese", "Kannada", "Korean", "Latin", "Latvian", "Lithuanian", "Macedonian", "Malay", "Maltese", 

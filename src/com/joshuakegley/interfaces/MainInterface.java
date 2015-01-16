@@ -3,12 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.joshuakegley.hcitranslation;
+package com.joshuakegley.interfaces;
 
 import com.translatorService.Language;
 import com.darrylburke.MenuScroller;
+import com.joshuakegley.hcitranslation.Settings;
 import static com.joshuakegley.hcitranslation.MainDriver.mainView;
-import com.joshuakegley.panels.TranslateInterface;
+import com.joshuakegley.interfaces.TranslateInterface;
+import com.survey.OpenPageInDefaultBrowser;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -151,6 +153,9 @@ public class MainInterface extends javax.swing.JFrame implements ActionListener 
         u1Langs = new javax.swing.JMenu();
         UserTwoLang1 = new javax.swing.JMenu();
         u2Langs = new javax.swing.JMenu();
+        jMenu1 = new javax.swing.JMenu();
+        viewSurveyLink = new javax.swing.JMenu();
+        surveyLink = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -182,6 +187,22 @@ public class MainInterface extends javax.swing.JFrame implements ActionListener 
 
         menuBar.add(UserTwoLang1);
 
+        jMenu1.setText("                                                                                                              ");
+        jMenu1.setEnabled(false);
+        menuBar.add(jMenu1);
+
+        viewSurveyLink.setText("Complete Interaction");
+
+        surveyLink.setText("Open Survey");
+        surveyLink.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                surveyLinkActionPerformed(evt);
+            }
+        });
+        viewSurveyLink.add(surveyLink);
+
+        menuBar.add(viewSurveyLink);
+
         setJMenuBar(menuBar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -192,11 +213,15 @@ public class MainInterface extends javax.swing.JFrame implements ActionListener 
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 534, Short.MAX_VALUE)
+            .addGap(0, 536, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void surveyLinkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_surveyLinkActionPerformed
+        OpenPageInDefaultBrowser.open();
+    }//GEN-LAST:event_surveyLinkActionPerformed
 
 
     
@@ -206,8 +231,11 @@ public class MainInterface extends javax.swing.JFrame implements ActionListener 
     private javax.swing.JMenu UserTwoLang1;
     private javax.swing.JMenuItem exitMenuItem;
     private javax.swing.JMenu fileMenu;
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar menuBar;
+    private javax.swing.JMenuItem surveyLink;
     private javax.swing.JMenu u1Langs;
     private javax.swing.JMenu u2Langs;
+    private javax.swing.JMenu viewSurveyLink;
     // End of variables declaration//GEN-END:variables
 }

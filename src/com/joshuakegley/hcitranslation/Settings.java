@@ -1,6 +1,6 @@
 package com.joshuakegley.hcitranslation;
 
-import com.joshuakegley.panels.TranslateInterface;
+import com.joshuakegley.interfaces.TranslateInterface;
 
 /**
  *Sort of a pointless method, just wanting to test it out
