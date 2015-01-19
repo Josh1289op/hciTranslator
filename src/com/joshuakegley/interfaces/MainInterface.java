@@ -12,6 +12,8 @@ import static com.joshuakegley.hcitranslation.MainDriver.mainView;
 import com.joshuakegley.interfaces.TranslateInterface;
 import com.survey.OpenPageInDefaultBrowser;
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -34,9 +36,17 @@ public class MainInterface extends javax.swing.JFrame implements ActionListener 
      */
     public MainInterface() {
         initComponents();
+        //CENTER WINDOW
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
+        //SET COLOR
+        this.getContentPane().setBackground(new Color(54,57,59));
+        
+        //Create Menus for selecting languages
         this.createMenuMap();
         this.populateJMenu(this.createMenuItems(), u1Langs);
         this.populateJMenu(this.createMenuItems(), u2Langs);
+        
         
         //File Exit Action Listener
         exitMenuItem.addActionListener(new ActionListener() {
@@ -45,9 +55,8 @@ public class MainInterface extends javax.swing.JFrame implements ActionListener 
             }
         });
         
-        this.setVisible(false);
-        setBackground(Color.CYAN);
-        this.setVisible(true);
+
+        
         
     }
 
@@ -78,6 +87,8 @@ public class MainInterface extends javax.swing.JFrame implements ActionListener 
             if( i == 0 ){}
             else{
                 JMenuItem temp = new JMenuItem(language);
+                //COLOR OF IN MENU!
+                //temp.setBackground(new Color(255,205,87));
                 temp.addActionListener(this);
                 langMap.add(temp);
                 
@@ -175,9 +186,12 @@ public class MainInterface extends javax.swing.JFrame implements ActionListener 
         setPreferredSize(new java.awt.Dimension(675, 562));
         setResizable(false);
 
-        menuBar.setBackground(java.awt.SystemColor.activeCaption);
+        menuBar.setBackground(new java.awt.Color(232, 221, 203));
+        menuBar.setForeground(new java.awt.Color(3, 54, 73));
+        menuBar.setBorderPainted(false);
         menuBar.setPreferredSize(new java.awt.Dimension(318, 40));
 
+        fileMenu.setForeground(new java.awt.Color(3, 54, 73));
         fileMenu.setText("File");
 
         exitMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_W, java.awt.event.InputEvent.CTRL_MASK));
@@ -187,6 +201,8 @@ public class MainInterface extends javax.swing.JFrame implements ActionListener 
 
         menuBar.add(fileMenu);
 
+        UserOneLang.setBackground(new java.awt.Color(255, 205, 87));
+        UserOneLang.setForeground(new java.awt.Color(3, 54, 73));
         UserOneLang.setText("User One");
         UserOneLang.setName("1"); // NOI18N
 
@@ -196,6 +212,7 @@ public class MainInterface extends javax.swing.JFrame implements ActionListener 
 
         menuBar.add(UserOneLang);
 
+        UserTwoLang1.setForeground(new java.awt.Color(3, 54, 73));
         UserTwoLang1.setText("User Two");
         UserTwoLang1.setName("2"); // NOI18N
 
@@ -205,6 +222,7 @@ public class MainInterface extends javax.swing.JFrame implements ActionListener 
 
         menuBar.add(UserTwoLang1);
 
+        viewSurveyLink.setForeground(new java.awt.Color(3, 54, 73));
         viewSurveyLink.setText("Complete Interaction");
 
         surveyLink.setText("Open Survey");

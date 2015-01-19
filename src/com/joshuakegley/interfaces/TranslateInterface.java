@@ -7,14 +7,21 @@ import com.joshuakegley.hcitranslation.Translate;
 import com.translatorService.Language;
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.ComponentOrientation;
 import java.awt.EventQueue;
+import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.AbstractButton;
+import javax.swing.DefaultListCellRenderer;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JComponent;
+import javax.swing.JLabel;
+import javax.swing.border.EmptyBorder;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.DefaultCaret;
 import javax.swing.text.SimpleAttributeSet;
@@ -58,18 +65,40 @@ public class TranslateInterface extends javax.swing.JPanel {
                 user2ComboBoxAction(evt);   
             }
         });
+        user1ComboBox.setRenderer(new DefaultListCellRenderer() {
+            @Override
+            public void paint(Graphics g) {
+                setBackground(new Color(232,221,203));
+                setForeground(new Color(3,54,73));
+                super.paint(g);
+            }
+        });
         
+        user2ComboBox.setRenderer(new DefaultListCellRenderer() {
+            @Override
+            public void paint(Graphics g) {
+                setBackground(new Color(232,221,203));
+                setForeground(new Color(3,54,73));
+                super.paint(g);
+            }
+        });
         lang1Text.addMouseListener(new ContextMenuMouseListener());
         lang2Text.addMouseListener(new ContextMenuMouseListener());
         displayPane.addMouseListener(new ContextMenuMouseListener());
         
 
+        ((JLabel)user2ComboBox.getRenderer()).setHorizontalAlignment(JLabel.RIGHT);
+        user2ComboBox.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
+       
         
+
         
-        
+       
+     
     }
     private static Language languages = new Language();
-    
+    public boolean firstTime1 = true;
+    public boolean firstTime2 = true;
     
     public static void setLang1(String langLabel, String langCode){
             if(langCode == "en"){
@@ -120,11 +149,11 @@ public class TranslateInterface extends javax.swing.JPanel {
             
             try {
                 sdoc.insertString(length, message + "\n" + user1Result, null);
-                sdoc.setParagraphAttributes(length+1, 1, leftAlign, true);
+                sdoc.setParagraphAttributes(length+1, 1, leftAlign, false);
             } catch (BadLocationException ex) {
                 Logger.getLogger(TranslateInterface.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
+            lang1Text.setText("");
         }else {
             message = lang2Text.getText();
             user2Result = Translate.translate(message, Settings.getLang2(), Settings.getLang1());
@@ -137,11 +166,12 @@ public class TranslateInterface extends javax.swing.JPanel {
             
             try {
                 sdoc.insertString(length, user2Result + "\n" + message + "\n", null);
-                sdoc.setParagraphAttributes(length+1, 1, rightAlign, true);
-                sdoc.setParagraphAttributes(length + user2Result.length()+1, 1, rightAlign, true);
+                sdoc.setParagraphAttributes(length+1, 1, rightAlign, false);
+                sdoc.setParagraphAttributes(length + user2Result.length()+1, 1, rightAlign, false);
             } catch (BadLocationException ex) {
                 Logger.getLogger(TranslateInterface.class.getName()).log(Level.SEVERE, null, ex);
             };
+            lang2Text.setText("");
         }
         
         displayPane.setCaretPosition(displayPane.getDocument().getLength());
@@ -169,40 +199,79 @@ public class TranslateInterface extends javax.swing.JPanel {
         jScrollPane2 = new javax.swing.JScrollPane();
         displayPane = new javax.swing.JTextPane();
 
-        setBackground(new java.awt.Color(149, 165, 166));
+        setBackground(new java.awt.Color(54, 57, 59));
         setPreferredSize(new java.awt.Dimension(586, 469));
 
-        lang1Text.setBackground(new java.awt.Color(255, 204, 204));
+        lang1TranslateBox.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(3, 101, 100), 2, true));
+        lang1TranslateBox.setOpaque(false);
+
+        lang1Text.setBackground(new java.awt.Color(188, 189, 172));
         lang1Text.setColumns(20);
         lang1Text.setLineWrap(true);
         lang1Text.setRows(5);
+        lang1Text.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lang1TextMouseClicked(evt);
+            }
+        });
         lang1TranslateBox.setViewportView(lang1Text);
 
-        lang2Text.setBackground(new java.awt.Color(204, 204, 255));
+        lang2TranslateBox.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(3, 101, 100), 2, true));
+        lang2TranslateBox.setOpaque(false);
+
+        lang2Text.setBackground(new java.awt.Color(188, 189, 172));
         lang2Text.setColumns(20);
         lang2Text.setLineWrap(true);
         lang2Text.setRows(5);
         lang2Text.setWrapStyleWord(true);
+        lang2Text.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lang2TextMouseClicked(evt);
+            }
+        });
         lang2TranslateBox.setViewportView(lang2Text);
 
+        lang2TranslateBtn.setBackground(new java.awt.Color(232, 221, 203));
         lang2TranslateBtn.setFont(new java.awt.Font("Arial Unicode MS", 0, 12)); // NOI18N
+        lang2TranslateBtn.setForeground(new java.awt.Color(3, 54, 73));
         lang2TranslateBtn.setText("Translate");
         lang2TranslateBtn.setName("2"); // NOI18N
 
+        lang1TranslateBtn.setBackground(new java.awt.Color(232, 221, 203));
         lang1TranslateBtn.setFont(new java.awt.Font("Arial Unicode MS", 0, 12)); // NOI18N
+        lang1TranslateBtn.setForeground(new java.awt.Color(3, 54, 73));
         lang1TranslateBtn.setText("Translate");
         lang1TranslateBtn.setName("1"); // NOI18N
 
+        lang1ResetBtn.setBackground(new java.awt.Color(232, 221, 203));
         lang1ResetBtn.setFont(new java.awt.Font("Arial Unicode MS", 0, 12)); // NOI18N
+        lang1ResetBtn.setForeground(new java.awt.Color(3, 54, 73));
         lang1ResetBtn.setText("Reset");
+        lang1ResetBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                lang1ResetBtnActionPerformed(evt);
+            }
+        });
 
+        lang2ResetBtn.setBackground(new java.awt.Color(232, 221, 203));
         lang2ResetBtn.setFont(new java.awt.Font("Arial Unicode MS", 0, 12)); // NOI18N
+        lang2ResetBtn.setForeground(new java.awt.Color(3, 54, 73));
         lang2ResetBtn.setText("Reset");
+        lang2ResetBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                lang2ResetBtnActionPerformed(evt);
+            }
+        });
 
         user1ComboBox.setModel(new javax.swing.DefaultComboBoxModel(languages.lang));
 
         user2ComboBox.setModel(new javax.swing.DefaultComboBoxModel(languages.lang));
 
+        jScrollPane2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(3, 101, 100), 2, true));
+        jScrollPane2.setOpaque(false);
+
+        displayPane.setBackground(new java.awt.Color(188, 189, 172));
+        displayPane.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jScrollPane2.setViewportView(displayPane);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -221,14 +290,14 @@ public class TranslateInterface extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(lang1ResetBtn))
                             .addComponent(user1ComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 230, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 220, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(lang2TranslateBtn)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                                 .addComponent(lang2ResetBtn))
-                            .addComponent(lang2TranslateBox)
-                            .addComponent(user2ComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(user2ComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lang2TranslateBox, javax.swing.GroupLayout.Alignment.TRAILING))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -237,7 +306,7 @@ public class TranslateInterface extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(user1ComboBox, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
                     .addComponent(user2ComboBox))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(lang1TranslateBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -252,44 +321,73 @@ public class TranslateInterface extends javax.swing.JPanel {
                             .addComponent(lang2TranslateBtn)
                             .addComponent(lang2ResetBtn))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private static void user1ComboBoxAction(ActionEvent evt){
+    private void lang1ResetBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lang1ResetBtnActionPerformed
+        lang1Text.setText("");
+    }//GEN-LAST:event_lang1ResetBtnActionPerformed
+
+    private void lang2ResetBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lang2ResetBtnActionPerformed
+        lang2Text.setText("");
+    }//GEN-LAST:event_lang2ResetBtnActionPerformed
+
+    private void lang1TextMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lang1TextMouseClicked
+        if(firstTime1){
+            lang1Text.setText("");
+        }
+        firstTime1 = false;
+    }//GEN-LAST:event_lang1TextMouseClicked
+
+    private void lang2TextMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lang2TextMouseClicked
+        if(firstTime2){
+            lang2Text.setText("");
+        }
+        firstTime2 = false;
+    }//GEN-LAST:event_lang2TextMouseClicked
+
+    private void user1ComboBoxAction(ActionEvent evt){
         int selected = ((JComboBox)evt.getSource()).getSelectedIndex();
         
         if(languages.langCode[selected] == "en"){
             lang1TranslateBtn.setText("Translate");
             lang1ResetBtn.setText("Reset");
+            lang1Text.setText("What would you like to translate?");
         }else{
             EventQueue.invokeLater(new Runnable() {
                 public void run() {
                     lang1TranslateBtn.setText(Translate.translate("Translate", "en", languages.langCode[selected]));
                     lang1ResetBtn.setText(Translate.translate("Reset", "en", languages.langCode[selected]));
+                    lang1Text.setText(Translate.translate("What would you like to translate?", "en", languages.langCode[selected]));
+
                 }
             });
         }
+        firstTime1 = true;
         System.out.println("User 1 Language updated to: " + languages.lang[selected]);
         Settings.setLang1(languages.lang[selected], languages.langCode[selected]);
     }
     
-    private static void user2ComboBoxAction(ActionEvent evt){
+    private void user2ComboBoxAction(ActionEvent evt){
         int selected = ((JComboBox)evt.getSource()).getSelectedIndex();
         
 
         if(languages.langCode[selected] == "en"){
             lang2TranslateBtn.setText("Translate");
             lang2ResetBtn.setText("Reset");
+            lang2Text.setText("What would you like to translate?");
         }else{
             EventQueue.invokeLater(new Runnable() {
                 public void run() {
                     lang2TranslateBtn.setText(Translate.translate("Translate", "en", languages.langCode[selected]));
                     lang2ResetBtn.setText(Translate.translate("Reset", "en", languages.langCode[selected]));
+                    lang2Text.setText(Translate.translate("What would you like to translate?", "en", languages.langCode[selected]));
                 }
             });
         }
+        firstTime2 = true;
         System.out.println("User 2 Language updated to: " + languages.lang[selected]);
         Settings.setLang2(languages.lang[selected], languages.langCode[selected]);
     }

@@ -96,13 +96,21 @@ public class LanguageInterface extends JPanel {
         orText = new javax.swing.JLabel();
         userLabel = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(54, 57, 59));
+
+        chooseText.setBackground(new java.awt.Color(149, 165, 166));
         chooseText.setFont(new java.awt.Font("Quicksand", 0, 24)); // NOI18N
+        chooseText.setForeground(new java.awt.Color(205, 179, 128));
         chooseText.setText("Choose Language:");
 
+        arabFlag.setBackground(new java.awt.Color(153, 178, 183));
+        arabFlag.setForeground(new java.awt.Color(205, 179, 128));
         arabFlag.setIcon(new javax.swing.ImageIcon(getClass().getResource("/flags/Saudi Arabia.png"))); // NOI18N
 
+        arabicRadio.setBackground(new java.awt.Color(54, 57, 59));
         selectLang.add(arabicRadio);
         arabicRadio.setFont(new java.awt.Font("Quicksand", 2, 14)); // NOI18N
+        arabicRadio.setForeground(new java.awt.Color(205, 179, 128));
         arabicRadio.setText("Arabic");
         arabicRadio.setName("3"); // NOI18N
         arabicRadio.addItemListener(new java.awt.event.ItemListener() {
@@ -116,10 +124,14 @@ public class LanguageInterface extends JPanel {
             }
         });
 
+        bengaliFlag.setBackground(new java.awt.Color(153, 178, 183));
+        bengaliFlag.setForeground(new java.awt.Color(205, 179, 128));
         bengaliFlag.setIcon(new javax.swing.ImageIcon(getClass().getResource("/flags/Bangladesh.png"))); // NOI18N
 
+        bengaliRadio.setBackground(new java.awt.Color(54, 57, 59));
         selectLang.add(bengaliRadio);
         bengaliRadio.setFont(new java.awt.Font("Quicksand", 2, 14)); // NOI18N
+        bengaliRadio.setForeground(new java.awt.Color(205, 179, 128));
         bengaliRadio.setText("Bengali");
         bengaliRadio.setName("6"); // NOI18N
         bengaliRadio.addItemListener(new java.awt.event.ItemListener() {
@@ -128,8 +140,10 @@ public class LanguageInterface extends JPanel {
             }
         });
 
+        frenchRadio.setBackground(new java.awt.Color(54, 57, 59));
         selectLang.add(frenchRadio);
         frenchRadio.setFont(new java.awt.Font("Quicksand", 2, 14)); // NOI18N
+        frenchRadio.setForeground(new java.awt.Color(205, 179, 128));
         frenchRadio.setText("French");
         frenchRadio.setName("21"); // NOI18N
         frenchRadio.addItemListener(new java.awt.event.ItemListener() {
@@ -138,10 +152,14 @@ public class LanguageInterface extends JPanel {
             }
         });
 
+        jLabel4.setBackground(new java.awt.Color(153, 178, 183));
+        jLabel4.setForeground(new java.awt.Color(205, 179, 128));
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/flags/United States of America.png"))); // NOI18N
 
+        englishRadio.setBackground(new java.awt.Color(54, 57, 59));
         selectLang.add(englishRadio);
         englishRadio.setFont(new java.awt.Font("Quicksand", 2, 14)); // NOI18N
+        englishRadio.setForeground(new java.awt.Color(205, 179, 128));
         englishRadio.setSelected(true);
         englishRadio.setText("English");
         englishRadio.setName("16"); // NOI18N
@@ -151,10 +169,14 @@ public class LanguageInterface extends JPanel {
             }
         });
 
+        jLabel5.setBackground(new java.awt.Color(153, 178, 183));
+        jLabel5.setForeground(new java.awt.Color(205, 179, 128));
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/flags/France.png"))); // NOI18N
 
+        hindiRadio.setBackground(new java.awt.Color(54, 57, 59));
         selectLang.add(hindiRadio);
         hindiRadio.setFont(new java.awt.Font("Quicksand", 2, 14)); // NOI18N
+        hindiRadio.setForeground(new java.awt.Color(205, 179, 128));
         hindiRadio.setText("Hindustani");
         hindiRadio.setName("29"); // NOI18N
         hindiRadio.addItemListener(new java.awt.event.ItemListener() {
@@ -163,10 +185,14 @@ public class LanguageInterface extends JPanel {
             }
         });
 
+        jLabel6.setBackground(new java.awt.Color(54, 57, 59));
+        jLabel6.setForeground(new java.awt.Color(205, 179, 128));
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/flags/China.png"))); // NOI18N
 
+        mandarinRadio.setBackground(new java.awt.Color(54, 57, 59));
         selectLang.add(mandarinRadio);
         mandarinRadio.setFont(new java.awt.Font("Quicksand", 2, 14)); // NOI18N
+        mandarinRadio.setForeground(new java.awt.Color(205, 179, 128));
         mandarinRadio.setText("Mandarin");
         mandarinRadio.setName("10"); // NOI18N
         mandarinRadio.addItemListener(new java.awt.event.ItemListener() {
@@ -175,17 +201,25 @@ public class LanguageInterface extends JPanel {
             }
         });
 
+        jLabel7.setBackground(new java.awt.Color(153, 178, 183));
+        jLabel7.setForeground(new java.awt.Color(205, 179, 128));
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/flags/India.png"))); // NOI18N
 
+        russianRadio.setBackground(new java.awt.Color(54, 57, 59));
         selectLang.add(russianRadio);
         russianRadio.setFont(new java.awt.Font("Quicksand", 2, 14)); // NOI18N
+        russianRadio.setForeground(new java.awt.Color(205, 179, 128));
         russianRadio.setText("Russian");
         russianRadio.setName("49"); // NOI18N
 
+        jLabel8.setBackground(new java.awt.Color(54, 57, 59));
+        jLabel8.setForeground(new java.awt.Color(205, 179, 128));
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/flags/Portugal.png"))); // NOI18N
 
+        portRadio.setBackground(new java.awt.Color(54, 57, 59));
         selectLang.add(portRadio);
         portRadio.setFont(new java.awt.Font("Quicksand", 2, 14)); // NOI18N
+        portRadio.setForeground(new java.awt.Color(205, 179, 128));
         portRadio.setText("Portuguese");
         portRadio.setName("47"); // NOI18N
         portRadio.addItemListener(new java.awt.event.ItemListener() {
@@ -194,10 +228,14 @@ public class LanguageInterface extends JPanel {
             }
         });
 
+        jLabel9.setBackground(new java.awt.Color(54, 57, 59));
+        jLabel9.setForeground(new java.awt.Color(205, 179, 128));
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/flags/Russian Federation.png"))); // NOI18N
 
+        indonRadio.setBackground(new java.awt.Color(54, 57, 59));
         selectLang.add(indonRadio);
         indonRadio.setFont(new java.awt.Font("Quicksand", 2, 14)); // NOI18N
+        indonRadio.setForeground(new java.awt.Color(205, 179, 128));
         indonRadio.setText("Maly-Indonesian");
         indonRadio.setName("32"); // NOI18N
         indonRadio.addItemListener(new java.awt.event.ItemListener() {
@@ -206,10 +244,14 @@ public class LanguageInterface extends JPanel {
             }
         });
 
+        jLabel10.setBackground(new java.awt.Color(54, 57, 59));
+        jLabel10.setForeground(new java.awt.Color(205, 179, 128));
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/flags/Mexico.png"))); // NOI18N
 
+        spanishRadio.setBackground(new java.awt.Color(54, 57, 59));
         selectLang.add(spanishRadio);
         spanishRadio.setFont(new java.awt.Font("Quicksand", 2, 14)); // NOI18N
+        spanishRadio.setForeground(new java.awt.Color(205, 179, 128));
         spanishRadio.setText("Spanish");
         spanishRadio.setName("53"); // NOI18N
         spanishRadio.addItemListener(new java.awt.event.ItemListener() {
@@ -218,8 +260,12 @@ public class LanguageInterface extends JPanel {
             }
         });
 
+        jLabel11.setBackground(new java.awt.Color(54, 57, 59));
+        jLabel11.setForeground(new java.awt.Color(205, 179, 128));
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/flags/Indonesia.png"))); // NOI18N
 
+        selectButton.setBackground(new java.awt.Color(232, 221, 203));
+        selectButton.setForeground(new java.awt.Color(3, 54, 73));
         selectButton.setText("Select");
         selectButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -227,19 +273,29 @@ public class LanguageInterface extends JPanel {
             }
         });
 
+        dropdownLang.setBackground(new java.awt.Color(232, 221, 203));
         dropdownLang.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        dropdownLang.setForeground(new java.awt.Color(3, 54, 73));
         dropdownLang.setModel(new javax.swing.DefaultComboBoxModel(languages.lang));
         dropdownLang.setToolTipText("");
+        dropdownLang.setBorder(null);
         dropdownLang.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 dropdownLangItemStateChanged(evt);
             }
         });
+        dropdownLang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dropdownLangActionPerformed(evt);
+            }
+        });
 
         orText.setFont(new java.awt.Font("Quicksand", 2, 36)); // NOI18N
+        orText.setForeground(new java.awt.Color(205, 179, 128));
         orText.setText("Or...");
 
         userLabel.setFont(new java.awt.Font("Quicksand", 2, 36)); // NOI18N
+        userLabel.setForeground(new java.awt.Color(3, 101, 100));
         userLabel.setText("-------------");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -306,7 +362,7 @@ public class LanguageInterface extends JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(chooseText)))
-                .addContainerGap(66, Short.MAX_VALUE))
+                .addContainerGap(65, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -412,6 +468,10 @@ public class LanguageInterface extends JPanel {
     private void arabicRadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_arabicRadioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_arabicRadioActionPerformed
+
+    private void dropdownLangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dropdownLangActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dropdownLangActionPerformed
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
