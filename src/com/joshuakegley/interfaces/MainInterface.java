@@ -44,6 +44,11 @@ public class MainInterface extends javax.swing.JFrame implements ActionListener 
                 System.exit(0);
             }
         });
+        
+        this.setVisible(false);
+        setBackground(Color.CYAN);
+        this.setVisible(true);
+        
     }
 
         private Map<String, Integer> langMap;
@@ -92,9 +97,17 @@ public class MainInterface extends javax.swing.JFrame implements ActionListener 
     
     public void updateUserSettings(int user, String languageLabel, String language){
         if(user == 1){
+            if(Settings.getLang2() == null ? language == null : Settings.getLang2().equals(language)){
+                System.out.println("Can't have the same language");
+                return;
+            }  
             Settings.setLang1(languageLabel, language);
             TranslateInterface.setLang1(languageLabel, language);
         }else{
+            if(Settings.getLang1() == null ? language == null : Settings.getLang1().equals(language)){
+                System.out.println("Can't have the same language");
+                return;
+            }  
             Settings.setLang2(languageLabel, language);
             TranslateInterface.setLang2(languageLabel, language);
         }        
@@ -109,14 +122,14 @@ public class MainInterface extends javax.swing.JFrame implements ActionListener 
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(74, 74, 74)
+                .addGap(40, 40, 40)
                 .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(92, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(37, 37, 37)
+                .addGap(40, 40, 40)
                 .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(56, Short.MAX_VALUE))
         );
@@ -153,12 +166,17 @@ public class MainInterface extends javax.swing.JFrame implements ActionListener 
         u1Langs = new javax.swing.JMenu();
         UserTwoLang1 = new javax.swing.JMenu();
         u2Langs = new javax.swing.JMenu();
-        jMenu1 = new javax.swing.JMenu();
         viewSurveyLink = new javax.swing.JMenu();
         surveyLink = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(149, 164, 166));
+        setForeground(java.awt.Color.white);
+        setPreferredSize(new java.awt.Dimension(675, 562));
         setResizable(false);
+
+        menuBar.setBackground(java.awt.SystemColor.activeCaption);
+        menuBar.setPreferredSize(new java.awt.Dimension(318, 40));
 
         fileMenu.setText("File");
 
@@ -187,10 +205,6 @@ public class MainInterface extends javax.swing.JFrame implements ActionListener 
 
         menuBar.add(UserTwoLang1);
 
-        jMenu1.setText("                                                                                                              ");
-        jMenu1.setEnabled(false);
-        menuBar.add(jMenu1);
-
         viewSurveyLink.setText("Complete Interaction");
 
         surveyLink.setText("Open Survey");
@@ -213,7 +227,7 @@ public class MainInterface extends javax.swing.JFrame implements ActionListener 
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 536, Short.MAX_VALUE)
+            .addGap(0, 522, Short.MAX_VALUE)
         );
 
         pack();
@@ -231,7 +245,6 @@ public class MainInterface extends javax.swing.JFrame implements ActionListener 
     private javax.swing.JMenu UserTwoLang1;
     private javax.swing.JMenuItem exitMenuItem;
     private javax.swing.JMenu fileMenu;
-    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem surveyLink;
     private javax.swing.JMenu u1Langs;

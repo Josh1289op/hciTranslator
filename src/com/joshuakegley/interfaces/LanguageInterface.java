@@ -391,10 +391,18 @@ public class LanguageInterface extends JPanel {
         }else{
         }
         if(user == "One"){
+            if(Settings.getLang2() == null ? selectedLangCode == null : Settings.getLang2().equals(selectedLangCode)){
+                System.out.println("Can't have the same language");
+                return;
+            }
             Settings.setLang1(selectedLangLabel, selectedLangCode);
             TranslateInterface.setLang1(selectedLangLabel, selectedLangCode);
             setVisible(false);
         }else{
+            if(Settings.getLang1() == null ? selectedLangCode == null : Settings.getLang1().equals(selectedLangCode)){
+                System.out.println("Can't have the same language");
+                return;
+            }        
             Settings.setLang2(selectedLangLabel, selectedLangCode);
             TranslateInterface.setLang2(selectedLangLabel, selectedLangCode);
             setVisible(false);
