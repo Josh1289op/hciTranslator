@@ -9,7 +9,6 @@ import com.translatorService.Language;
 import com.darrylburke.MenuScroller;
 import com.joshuakegley.hcitranslation.Settings;
 import static com.joshuakegley.hcitranslation.MainDriver.mainView;
-import com.joshuakegley.interfaces.TranslateInterface;
 import com.survey.OpenPageInDefaultBrowser;
 import java.awt.Color;
 import java.awt.Dimension;

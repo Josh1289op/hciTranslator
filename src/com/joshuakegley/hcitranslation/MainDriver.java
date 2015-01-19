@@ -4,9 +4,7 @@ import com.joshuakegley.interfaces.MainInterface;
 import java.awt.EventQueue;
 import com.joshuakegley.interfaces.LanguageInterface;
 import com.joshuakegley.interfaces.TranslateInterface;
-import javax.swing.GroupLayout;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 /**
  * MenuScroller.java library credit: Darryl Burke 
  * https://tips4java.wordpress.com/2009/02/01/menu-scroller/

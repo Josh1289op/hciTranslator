@@ -1,7 +1,5 @@
 package com.joshuakegley.hcitranslation;
 
-import com.joshuakegley.interfaces.TranslateInterface;
-
 /**
  *Sort of a pointless method, just wanting to test it out
  * @author Josh

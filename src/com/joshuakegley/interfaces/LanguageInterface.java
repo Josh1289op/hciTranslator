@@ -4,10 +4,8 @@
  * and open the template in the editor.
  */
 package com.joshuakegley.interfaces;
-import com.joshuakegley.hcitranslation.MainDriver;
 import com.translatorService.Language;
 import com.joshuakegley.hcitranslation.Settings;
-import java.awt.event.ActionListener;
 import java.util.Enumeration;
 import javax.swing.AbstractButton;
 import javax.swing.ButtonGroup;

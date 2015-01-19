@@ -1,33 +1,25 @@
 package com.joshuakegley.interfaces;
 
 import com.batsov.ContextMenuMouseListener;
-import com.joshuakegley.hcitranslation.MainDriver;
 import com.joshuakegley.hcitranslation.Settings;
 import com.joshuakegley.hcitranslation.Translate;
 import com.translatorService.Language;
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.ComponentOrientation;
 import java.awt.EventQueue;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
-import java.io.IOException;
 import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.AbstractButton;
 import javax.swing.DefaultListCellRenderer;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
-import javax.swing.JComponent;
 import javax.swing.JLabel;
-import javax.swing.border.EmptyBorder;
 import javax.swing.text.BadLocationException;
-import javax.swing.text.DefaultCaret;
 import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
 import javax.swing.text.StyledDocument;
-import org.json.simple.parser.ParseException;
 
 /**
  *
@@ -89,13 +81,10 @@ public class TranslateInterface extends javax.swing.JPanel {
 
         ((JLabel)user2ComboBox.getRenderer()).setHorizontalAlignment(JLabel.RIGHT);
         user2ComboBox.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
-       
-        
-
-        
-       
-     
+    
     }
+    
+    
     private static Language languages = new Language();
     public boolean firstTime1 = true;
     public boolean firstTime2 = true;
