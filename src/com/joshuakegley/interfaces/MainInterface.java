@@ -182,7 +182,7 @@ public class MainInterface extends javax.swing.JFrame implements ActionListener 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(149, 164, 166));
         setForeground(java.awt.Color.white);
-        setPreferredSize(new java.awt.Dimension(675, 562));
+        setPreferredSize(new java.awt.Dimension(675, 660));
         setResizable(false);
 
         menuBar.setBackground(new java.awt.Color(232, 221, 203));

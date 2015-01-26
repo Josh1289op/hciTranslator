@@ -276,7 +276,7 @@ public class LanguageInterface extends JPanel {
         dropdownLang.setForeground(new java.awt.Color(3, 54, 73));
         dropdownLang.setModel(new javax.swing.DefaultComboBoxModel(languages.lang));
         dropdownLang.setToolTipText("");
-        dropdownLang.setBorder(null);
+        dropdownLang.setBorder(new javax.swing.border.MatteBorder(null));
         dropdownLang.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 dropdownLangItemStateChanged(evt);

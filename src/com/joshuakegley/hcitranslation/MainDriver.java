@@ -38,35 +38,40 @@ public class MainDriver {
                 mainLogic.mainView.setVisible(true);
             }
         });
-        mainLogic.setup();    
+        mainLogic.setup(one);    
     }
     public static MainInterface mainView;
-    public static LanguageInterface one;
-    public static LanguageInterface two;
+    public static LanguageInterface one = new LanguageInterface("One");;
+    public static LanguageInterface two = new LanguageInterface("Two");;
     public static TranslateInterface translate = new TranslateInterface();;
 
 
     
-    public void setup(){
-        one = new LanguageInterface("One");
-        two = new LanguageInterface("Two");
+    public static void setup(LanguageInterface panel){
+        
+        
         EventQueue.invokeLater(new Runnable() {
             public void run() {
-                System.out.println("Adding Panel One");
-                mainView.addPanel(one);
+                System.out.println("Adding Panel " + panel.getName());
+                mainView.addPanel(panel);
                 
             }
         });
+        
+        /*
         EventQueue.invokeLater(new Runnable() {
             public void run() {
-                
+
                 System.out.println("Adding Panel Two");
+                if(!one.isVisible() && Settings.getLang1() == null){
+                    mainView.addPanel(one);
+                }
                 mainView.addPanel(two);
-                
+
+
             }
         });
-        
-        
+                */
         //languageSelect("One");
         //languageSelect("Two");
         //Create instance of language page

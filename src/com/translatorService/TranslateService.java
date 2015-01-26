@@ -115,7 +115,7 @@ public class TranslateService {
             
             HttpResponse response = client.execute(request);
  
-            BufferedReader rd = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));
+            BufferedReader rd = new BufferedReader(new InputStreamReader(response.getEntity().getContent(), "UTF-8"));
  
             StringBuilder result = new StringBuilder();
             String line;

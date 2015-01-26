@@ -15,9 +15,9 @@ public class Settings {
     public static void setLang1(String langLabel, String langCode) {
         Settings.lang1 = langCode;
         MainDriver.one.setPanelInvisible();
-        if(langCode != null && lang2 != null){
-            MainDriver.translate();
-        }
+        
+        MainDriver.setup(MainDriver.two);
+        
     }
 
     public static String getLang2() {
@@ -27,9 +27,8 @@ public class Settings {
     public static void setLang2(String langLabel, String langCode) {
         Settings.lang2 = langCode;
         MainDriver.two.setPanelInvisible();
-        if(lang1 != null && langCode != null){
-            MainDriver.translate();
-        }
+        MainDriver.translate();
+     
     }
     
     
